@@ -17,6 +17,8 @@ The repository contains 4 folders:
 
 - `Data`
 
+- `Figure`
+
 - `Function`
 
 - `R`
