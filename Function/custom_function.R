@@ -99,7 +99,7 @@ propT_beyond <- function(data, df, threshold = 0.2, tail = c("above", "below")) 
   }
   
   # Return the proportion
-  return(round(proportion*100, 2))
+  return(proportion*100)
 }
 
 # Plotting prediction distributions
@@ -1323,4 +1323,30 @@ h.calc <- function(mod){
   rownames(hs) <- c("Total", mod$s.names)
   return(hs)
   
+}
+
+# function to estimate typical sampling error variance
+sigma2_v <- function(mod){
+  sigma2_v <- sum(1 / mod$vi) * (mod$k - 1) /
+    (sum(1 / mod$vi)^2 - sum((1 / mod$vi)^2))
+  return(sigma2_v)
+}
+
+# function to calculate proportion above or below confidence interval threshold
+calculate_threshold <- function(model) {
+  # Calculate the mean and sd
+  pred_dens_data <- pred_dist_data(model)
+  
+  # Check the sign of the model coefficient
+  if (model$beta[1] > 0) {
+    # Calculate proportion of effect sizes above lower confidence interval
+    pred_dens_data$threshold <- propT_beyond(pred_dens_data, df = model$k.all - 1, threshold = model$ci.lb, tail = "above")
+    pred_dens_data$group <- c("PD_b", "PD_w", "PD_t")
+  } else {
+    # Calculate proportion of effect sizes below upper confidence interval
+    pred_dens_data$threshold <- propT_beyond(pred_dens_data, df = model$k.all - 1, threshold = model$ci.ub, tail = "below")
+    pred_dens_data$group <- c("PD_b", "PD_w", "PD_t")
+  }
+  
+  return(pred_dens_data)
 }
