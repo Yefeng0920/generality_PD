@@ -23,9 +23,36 @@ The repository contains 4 folders:
 
 - `R`
  
-- `Figure`
-
-  
 ### `Data` folder
 
 The `Data` folder includes raw data (`dat_list.Rds` and `dat_list_rob.Rds`) and processed data (`mod_fitted.Rds` and `mod_rob_fitted.Rds`).
+
+### `Figure` folder
+
+The `Figure` folder includes two subfolders:
+
+`main` contains the figures reported in the main text,
+
+`supplement` contains the supplementary figures.
+
+### `Function` folder
+
+The `Function` folder includes the custom `R` functions for model fitting and visualizations.
+
+### `R` folder
+
+The `R` folder includes a `.rmd` file `Main_script.Rmd`, which can be used to reproduce all results.
+
+## Licence
+
+The files in this dataset are licensed under the Creative Commons Attribution 4.0 International License (to view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/).
+
+## General correspondence
+
+- Dr. Yefeng Yang
+
+Evolution & Ecology Research Centre (EERC), 
+School of Biological, Earth and Environmental Sciences (BEES), 
+The University of New South Wales, Sydney, Australia
+
+Email: yefeng.yang1@unsw.edu.au
